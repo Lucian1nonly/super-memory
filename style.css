@@ -1,0 +1,513 @@
+html {
+  scroll-behavior: smooth;
+}
+
+/* RESET & GLOBAL STYLES */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins', sans-serif;
+    background:#0b0b0b;
+    color:white;
+    line-height:1.6;
+    overflow-x:hidden;
+}
+
+/* LANGUAGE */
+body.lang-en .ar-text{
+    display:none !important;
+}
+body.lang-ar .en-text{
+    display:none !important;
+}
+body.lang-ar{
+    font-family:'Cairo', sans-serif;
+}
+
+/* =========================================
+   NAVBAR FIX (Pusat Perbaikan Posisi)
+========================================= */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background: rgba(0,0,0,0.85);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+nav h1 {
+    color: #d4af37;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+nav ul.nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Memperbaiki teks ungu yang bocor */
+nav a {
+    color: white !important; 
+    text-decoration: none !important;
+    transition: 0.3s;
+    font-size: 0.95rem;
+}
+
+nav a:hover {
+    color: #d4af37 !important;
+}
+
+/* Wadah penahan tombol agar tidak nabrak */
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.lang-switcher {
+    display: flex;
+    background: #222;
+    padding: 3px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.lang-switcher button {
+    background: transparent;
+    border: none;
+    color: #888;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.75rem;
+    border-radius: 15px;
+    transition: 0.3s ease;
+}
+
+.lang-switcher button.active {
+    background: #d4af37;
+    color: black;
+}
+
+.menu-toggle {
+    display: none; /* Disembunyikan di laptop */
+    cursor: pointer;
+    font-size: 28px;
+    color: #d4af37;
+    user-select: none;
+}
+
+/* =========================================
+   HERO FIX (Perbaikan Foto Nge-zoom)
+========================================= */
+header.hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 120px 20px 40px;
+    overflow: hidden;
+}
+
+header.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: 
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.75)),
+        url('https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=1920&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+.hero h2 {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    max-width: 900px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #eee;
+}
+
+/* BUTTONS */
+.btn {
+    display: inline-block;
+    background: #d4af37;
+    color: black !important;
+    padding: 15px 40px;
+    border-radius: 40px;
+    text-decoration: none !important;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    box-shadow: 0 4px 15px rgba(201, 162, 60, 0.2);
+}
+
+.btn:hover {
+    background-color: #e5b845;
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(201, 162, 60, 0.6);
+}
+
+/* SECTIONS */
+section {
+    padding: 90px 10% 70px 10%;
+}
+
+.bg-darker {
+    background: #111111;
+}
+
+section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #d4af37;
+    font-size: 2rem;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+/* CARD DETAILS */
+.card {
+    background: #151515;
+    padding: 0 !important;
+    border-radius: 15px;
+    transition: 0.3s;
+    border: 1px solid #2a2a2a;
+    overflow: hidden;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #d4af37;
+}
+
+.card h3, .card p, .card h4, .card .car-details {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.card h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #d4af37;
+}
+
+.card p {
+    color: #aaa;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.card h4 {
+    margin-top: 20px;
+    margin-bottom: 25px;
+    font-size: 1.6rem;
+    color: #d4af37;
+}
+
+.card h4 small {
+    font-size: 0.9rem;
+    color: white;
+    font-weight: 300;
+}
+
+/* IMAGE CARD */
+.card-img-container {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    background: #222;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .card-img {
+    transform: scale(1.08);
+}
+
+/* CARS */
+.car-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.car-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.featured-car {
+    border: 1px solid #d4af37;
+    background: #1a1a1a;
+}
+
+.car-img-frame {
+    height: 240px;
+}
+
+.car-photo {
+    object-fit: contain;
+    background: #000;
+    padding: 10px;
+}
+
+.car-details {
+    flex-grow: 1;
+    margin-bottom: 10px;
+}
+
+.car-details p {
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.car-details p i {
+    color: #d4af37;
+    font-size: 0.9rem;
+}
+
+/* TESTIMONIAL */
+.testimonial-card {
+    display: flex;
+    flex-direction: column;
+    background: #151515;
+    border-radius: 15px;
+    border: 1px solid #2a2a2a;
+    overflow: hidden;
+    padding: 0 0 20px 0 !important;
+}
+
+.testi-img-frame {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    background: #222;
+}
+
+.testi-img-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+.testimonial-card h3 {
+    margin-top: 15px;
+    padding: 0 20px;
+    color: #d4af37;
+    font-size: 1.2rem;
+}
+
+.testimonial-card .rating {
+    padding: 0 20px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.testimonial-card p {
+    padding: 0 20px;
+    font-size: 0.9rem;
+    color: #ccc;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+/* CONTACT */
+.contact-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.contact-item {
+    background: #151515;
+    border: 1px solid #2a2a2a;
+    border-radius: 15px;
+    padding: 35px 25px;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    border-color: #d4af37;
+}
+
+.contact-btn-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: auto;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    letter-spacing: 0.3px;
+}
+
+.wa-item .contact-btn-label { background: rgba(37,211,102,0.12); color: #25d366; border: 1px solid rgba(37,211,102,0.4); }
+.snap-item .contact-btn-label { background: rgba(255,252,0,0.10); color: #fffc00; border: 1px solid rgba(255,252,0,0.35); }
+.email-item .contact-btn-label { background: rgba(234,67,53,0.10); color: #ea4335; border: 1px solid rgba(234,67,53,0.35); }
+
+.contact-item:hover .contact-btn-label { transform: translateY(-2px) scale(1.05); box-shadow: 0 8px 18px rgba(0,0,0,0.35); }
+.wa-item:hover .contact-btn-label { background: #25d366; color: white; }
+.snap-item:hover .contact-btn-label { background: #fffc00; color: black; }
+.email-item:hover .contact-btn-label { background: #ea4335; color: white; }
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* WHATSAPP FLOAT */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+    z-index: 9999;
+    transition: all 0.3s ease;
+    animation: pulse-animation 2s infinite;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.05);
+    background-color: #128c7e;
+    box-shadow: 0 15px 25px rgba(37, 211, 102, 0.5);
+}
+
+@keyframes pulse-animation {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* FAQ */
+.faq-section { padding: 80px 20px; background-color: #0f0f0f; }
+.faq-section h2 { color: #c9a23c; text-align: center; margin-bottom: 40px; }
+.faq-item { background: #1a1a1a; padding: 25px; border-radius: 12px; margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto; border: 1px solid #333; transition: transform 0.3s ease; }
+.faq-item:hover { transform: translateY(-5px); }
+.faq-item h4 { margin-bottom: 12px; color: #ffffff; font-size: 1.2rem; }
+.faq-item p { color: #aaaaaa; line-height: 1.6; margin: 0; }
+
+
+/* =========================================
+   MOBILE RESPONSIVE (Tampilan HP)
+========================================= */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Munculkan garis tiga di HP */
+    }
+
+    nav ul.nav-links {
+        display: none; /* Sembunyikan menu menyamping */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(0,0,0,0.98);
+        text-align: center;
+        padding: 20px 0;
+        border-bottom: 1px solid #333;
+    }
+
+    nav ul.nav-links.active {
+        display: flex; /* Akan muncul ke bawah kalau burger diklik (butuh JS) */
+    }
+
+    nav ul.nav-links li {
+        margin: 15px 0;
+    }
+
+    /* Penyesuaian teks & ukuran agar tidak kebesaran di layar kecil */
+    .hero { min-height: 85vh; padding-top: 160px; }
+    .hero h2 { font-size: 2.5rem; }
+    .btn { padding: 12px 30px; font-size: 0.9rem; }
+    
+    section { padding: 50px 5%; }
+    
+    .whatsapp-float span { display: none; }
+    .whatsapp-float { padding: 15px; border-radius: 50%; }
+}
+/* Tampilkan/Sembunyikan berdasarkan class di body */
+body:not(.lang-ar) .ar-text { display: none !important; }
+body.lang-ar .en-text { display: none !important; }
+body.lang-ar .ar-text { display: inline !important; }
+
+/* Saat mode Arab aktif, sembunyikan teks EN di dalam tombol WA */
+body.lang-ar .whatsapp-float .en-text {
+    display: none !important;
+<<<<<<< HEAD
+}
+=======
+}
+>>>>>>> 2f5b32797dd2884fd3a4aa9a41960a6b7933ce02
