@@ -591,3 +591,58 @@ body.lang-ar h2 span.char {
 .en-text, .ar-text {
     display: inline-block; /* Ubah dari default jika perlu */
 }
+
+/* Styling Hero agar responsif dan teks tidak terpotong */
+.hero {
+    padding: 100px 20px; /* Beri jarak atas-bawah agar tidak sesak */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero h2 {
+    font-size: 2.2rem; /* Ukuran pas untuk HP */
+    line-height: 1.2;
+    margin-bottom: 15px;
+    color: #fff;
+    min-height: 2.4em; /* Memberi ruang agar teks tidak lompat saat animasi */
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: #c9a23c;
+    margin-bottom: 25px;
+    font-weight: 600;
+    min-height: 1.5em;
+}
+
+
+/* Memberikan jarak antara teks "Get Confirmation" dengan elemen di bawahnya */
+.step-card p {
+    margin-bottom: 25px; /* Jarak bawah agar teks "Ready to experience..." tidak menempel */
+}
+
+/* Jika Anda ingin jarak yang lebih spesifik untuk section kontak */
+.contact-container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+/* Memberi jarak antara garis pembatas dan teks di bawahnya */
+.contact-divider {
+    margin: 40px 0; /* Jarak atas dan bawah garis agar terlihat lebih bersih */
+}
+
+/* Menargetkan teks tepat setelah garis pembatas di bagian kontak */
+#contact .contact-divider + .en-text, 
+#contact .contact-divider + .ar-text {
+    margin-top: 50px !important; /* Memberi jarak atas yang lega */
+    display: block;              /* Memastikan margin bekerja */
+}
+
+/* Jika Anda ingin jarak bawahnya juga lebih lega */
+.contact-subtitle {
+    margin-bottom: 30px !important;
+}
