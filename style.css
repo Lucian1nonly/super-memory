@@ -656,3 +656,13 @@ body.lang-ar h2 span.char {
         padding: 0 08px;              /* Memberi ruang di samping agar tidak menempel ke tepi layar */
     }
 }
+
+.hero h2, .hero p {
+    margin: 0; /* Menghapus semua jarak otomatis dari browser */
+    padding: 0;
+}
+
+/* Lalu beri jarak manual yang pas sesuai selera */
+.hero h2 {
+    margin-bottom: 10px; 
+}
