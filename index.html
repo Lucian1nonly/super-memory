@@ -33,19 +33,49 @@
 </header>
 
 <header class="hero">
-    <h2>
-        <span class="en-text">Explore Bali With Luxury & Comfort</span>
-        <span class="ar-text" style="display:none;">استكشف بالي برفاهية وراحة</span>
+    <h2 style="margin-bottom: 10px;">
+        <span id="anim-title" class="en-text">Bali Private Tour Service</span>
+        <span id="anim-title-ar" class="ar-text" style="display:none;" dir="rtl">خدمة الرحلات الخاصة في بالي</span>
     </h2>
-    <p>
-        <span class="en-text">Discover the beauty of Bali with us</span>
-        <span class="ar-text" style="display:none;">اكتشف جمال بالي معنا</span>
+    <p style="font-size: 1.4rem; color: #d4af37; font-weight: 600; margin-bottom: 20px;">
+        <span id="anim-subtitle" class="en-text">Explore Bali With Luxury & Comfort</span>
+        <span id="anim-subtitle-ar" class="ar-text" style="display:none;" dir="rtl">استكشف بالي بكل رفاهية وراحة</span>
     </p>
     <a href="#contact" class="btn">
-        <span class="en-text">Book Now</span>
-        <span class="ar-text" style="display:none;">احجز الآن</span>
+        <span class="en-text">Book Your Private Trip</span>
+        <span class="ar-text" style="display:none;">احجز رحلتك الخاصة الآن</span>
     </a>
 </header>
+
+<section id="about" style="background: #050505; color: #fff; padding: 60px 20px; text-align: center;">
+    <h2 class="en-text" style="color: #c9a23c;">Why Choose Alfauzan Tour?</h2>
+    <h2 class="ar-text" style="color: #c9a23c;" dir="rtl">لماذا تختار الفوزان تور؟</h2>
+    
+    <p class="en-text" style="max-width: 800px; margin: 20px auto; color: #ccc;">
+        We specialize in providing high-quality private tours for Arab guests. With our fluent Arabic-speaking drivers, comfortable vehicles, and deep knowledge of Bali's hidden gems, we ensure your family enjoys a stress-free and memorable holiday.
+    </p>
+    <p class="ar-text" style="max-width: 800px; margin: 20px auto; color: #ccc;" dir="rtl">
+        نحن متخصصون في تقديم جولات سياحية خاصة وعالية الجودة للضيوف العرب. مع سائقينا الذين يتحدثون اللغة العربية بطلاقة، وسياراتنا المريحة، ومعرفتنا العميقة بأجمل الأماكن في بالي، نضمن لعائلتك قضاء عطلة لا تُنسى في أجواء من الراحة والخصوصية.
+    </p>
+</section>
+
+<section class="trust-points">
+    <div class="point">
+        <i class="fas fa-user-shield"></i>
+        <h4 class="en-text">100% Private</h4>
+        <h4 class="ar-text">خصوصية تامة</h4>
+    </div>
+    <div class="point">
+        <i class="fas fa-comments"></i>
+        <h4 class="en-text">Arabic Speaking Driver</h4>
+        <h4 class="ar-text">سائق يتحدث العربية</h4>
+    </div>
+    <div class="point">
+        <i class="fas fa-check-circle"></i>
+        <h4 class="en-text">No Deposit Required</h4>
+        <h4 class="ar-text">لا حاجة لدفعة مقدمة</h4>
+    </div>
+</section>
 
 <section id="destinations">
     <h2 class="en-text">Tourist Destinations</h2>
@@ -534,6 +564,52 @@
         const btn = document.getElementById("backToTop");
         if (btn) btn.style.display = (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) ? "block" : "none";
     };
+</script>
+<script>
+    function animateText(elementId, delayStart = 0) {
+        const titleElement = document.getElementById(elementId);
+        
+        // Cek jika elemen ada DAN sedang tidak disembunyikan (display bukan none)
+        if (!titleElement || window.getComputedStyle(titleElement).display === 'none') return;
+
+        const text = titleElement.textContent;
+        titleElement.textContent = "";
+
+        const chars = text.split("");
+        chars.forEach((char, index) => {
+            const span = document.createElement("span");
+            span.textContent = char === " " ? "\u00A0" : char;
+            span.className = "char";
+            span.style.animationDelay = `${delayStart + (index * 0.04)}s`;
+            titleElement.appendChild(span);
+        });
+    }
+
+    function runHeroAnimation() {
+        const isArabic = document.body.classList.contains('lang-ar');
+        
+        // Panggil untuk bahasa yang aktif saja
+        if (isArabic) {
+            animateText("anim-title-ar", 0);
+            animateText("anim-subtitle-ar", 1.0);
+        } else {
+            animateText("anim-title", 0);
+            animateText("anim-subtitle", 1.0);
+        }
+    }
+
+    // Jalankan saat load
+    document.addEventListener("DOMContentLoaded", () => {
+        runHeroAnimation();
+    });
+
+    // Jalankan ulang saat tombol bahasa diklik, TAPI berikan delay agar class lang-ar/en sudah terpasang
+    document.getElementById('btn-en').addEventListener('click', () => {
+        setTimeout(runHeroAnimation, 100); 
+    });
+    document.getElementById('btn-ar').addEventListener('click', () => {
+        setTimeout(runHeroAnimation, 100);
+    });
 </script>
 </body>
 </html>
