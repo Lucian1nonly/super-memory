@@ -650,7 +650,7 @@ body.lang-ar h2 span.char {
 /* Mengatur ukuran font agar lebih proporsional di layar HP */
 @media (max-width: 600px) {
     .hero h2 {
-        font-size: 1.8rem !important; /* Ukuran font diperkecil khusus untuk HP */
+        font-size: 1.6rem !important; /* Ukuran font diperkecil khusus untuk HP */
         line-height: 1.3;
         word-wrap: break-word;        /* Memaksa kata yang terlalu panjang untuk turun baris dengan rapi */
         padding: 0 10px;              /* Memberi ruang di samping agar tidak menempel ke tepi layar */
