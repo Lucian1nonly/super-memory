@@ -566,50 +566,36 @@
     };
 </script>
 <script>
-    function animateText(elementId, delayStart = 0) {
-        const titleElement = document.getElementById(elementId);
+    function animateText(elementId, delayStart) {
+        const el = document.getElementById(elementId);
+        if (!el) return;
+
+        // Ambil teks asli dan hapus class 'char' jika sudah pernah dianimasikan sebelumnya
+        const text = el.innerText;
+        el.innerHTML = ""; 
         
-        // Cek jika elemen ada DAN sedang tidak disembunyikan (display bukan none)
-        if (!titleElement || window.getComputedStyle(titleElement).display === 'none') return;
-
-        const text = titleElement.textContent;
-        titleElement.textContent = "";
-
-        const chars = text.split("");
-        chars.forEach((char, index) => {
+        text.split("").forEach((char, index) => {
             const span = document.createElement("span");
             span.textContent = char === " " ? "\u00A0" : char;
             span.className = "char";
-            span.style.animationDelay = `${delayStart + (index * 0.04)}s`;
-            titleElement.appendChild(span);
+            span.style.animationDelay = `${delayStart + (index * 0.03)}s`;
+            el.appendChild(span);
         });
     }
 
-    function runHeroAnimation() {
-        const isArabic = document.body.classList.contains('lang-ar');
-        
-        // Panggil untuk bahasa yang aktif saja
-        if (isArabic) {
-            animateText("anim-title-ar", 0);
-            animateText("anim-subtitle-ar", 1.0);
-        } else {
-            animateText("anim-title", 0);
-            animateText("anim-subtitle", 1.0);
-        }
+    function triggerAnimations() {
+        const isAr = document.body.classList.contains('lang-ar');
+        // Panggil animasi untuk ID yang sesuai
+        animateText(isAr ? "anim-title-ar" : "anim-title", 0.1);
+        animateText(isAr ? "anim-subtitle-ar" : "anim-subtitle", 0.8);
     }
 
     // Jalankan saat load
-    document.addEventListener("DOMContentLoaded", () => {
-        runHeroAnimation();
-    });
+    document.addEventListener("DOMContentLoaded", triggerAnimations);
 
-    // Jalankan ulang saat tombol bahasa diklik, TAPI berikan delay agar class lang-ar/en sudah terpasang
-    document.getElementById('btn-en').addEventListener('click', () => {
-        setTimeout(runHeroAnimation, 100); 
-    });
-    document.getElementById('btn-ar').addEventListener('click', () => {
-        setTimeout(runHeroAnimation, 100);
-    });
+    // Jalankan saat tombol EN/AR ditekan
+    document.getElementById('btn-en').addEventListener('click', () => setTimeout(triggerAnimations, 50));
+    document.getElementById('btn-ar').addEventListener('click', () => setTimeout(triggerAnimations, 50));
 </script>
 </body>
 </html>
