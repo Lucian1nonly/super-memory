@@ -511,3 +511,27 @@ body.lang-ar .whatsapp-float .en-text {
 =======
 }
 >>>>>>> 2f5b32797dd2884fd3a4aa9a41960a6b7933ce02
+
+
+/* Styling tambahan untuk deskripsi di dalam kartu tur */
+#tours .card p {
+    padding: 0 20px 20px 20px; /* Memberi ruang di kiri, kanan, dan bawah */
+    font-size: 0.9rem;
+    color: #aaaaaa;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    flex-grow: 1; /* Memastikan teks mengisi ruang jika tinggi kartu bervariasi */
+}
+
+/* Memastikan tinggi kartu seragam jika diletakkan berdampingan */
+#tours .cards {
+    align-items: stretch;
+}
+
+/* Styling agar teks deskripsi rapi di section Activities */
+#activities .card p {
+    padding: 0 20px 20px 20px;
+    font-size: 0.9rem;
+    color: #aaaaaa;
+    line-height: 1.5;
+}
