@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alfauzan Tour - Premium Transport & Service</title>
+    <!-- Ditingkatkan untuk SEO: Judul mencakup target kata kunci -->
+    <title>Alfauzan Tour - Arabic Speaking Driver in Bali & Private Tour</title>
+    <!-- Ditambahkan untuk SEO: Meta deskripsi untuk mesin pencari -->
+    <meta name="description" content="Looking for an Arabic speaking driver in Bali? Alfauzan Tour provides trusted private transport, luxury cars, and holiday tours for Arab guests.">
+    
     <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -38,8 +42,9 @@
         <span id="anim-title-ar" class="ar-text" style="display:none;" dir="rtl">خدمة الرحلات الخاصة في بالي</span>
     </h2>
     <p style="font-size: 1.4rem; color: #d4af37; font-weight: 600; margin-bottom: 20px;">
-        <span id="anim-subtitle" class="en-text">Explore Bali With Luxury & Comfort</span>
-        <span id="anim-subtitle-ar" class="ar-text" style="display:none;" dir="rtl">استكشف بالي بكل رفاهية وراحة</span>
+        <!-- Ditingkatkan untuk SEO: Menyisipkan kata kunci di Sub-judul -->
+        <span id="anim-subtitle" class="en-text">Trusted Arabic Speaking Driver in Bali & Luxury Tour</span>
+        <span id="anim-subtitle-ar" class="ar-text" style="display:none;" dir="rtl">سائق موثوق يتحدث العربية في بالي وجولات فاخرة</span>
     </p>
     <a href="#contact" class="btn">
         <span class="en-text">Book Your Private Trip</span>
@@ -51,11 +56,12 @@
     <h2 class="en-text" style="color: #c9a23c;">Why Choose Alfauzan Tour?</h2>
     <h2 class="ar-text" style="color: #c9a23c;" dir="rtl">لماذا تختار الفوزان تور؟</h2>
     
+    <!-- Ditingkatkan untuk SEO: Integrasi kata kunci secara natural di paragraf -->
     <p class="en-text" style="max-width: 800px; margin: 20px auto; color: #ccc;">
-        We specialize in providing high-quality private tours for Arab guests. With our fluent Arabic-speaking drivers, comfortable vehicles, and deep knowledge of Bali's hidden gems, we ensure your family enjoys a stress-free and memorable holiday.
+        Looking for a reliable <strong>Arabic speaking driver in Bali</strong>? We specialize in providing high-quality private tours for Arab guests. With our fluent Arabic-speaking drivers, comfortable vehicles, and deep knowledge of Bali's hidden gems, we ensure your family enjoys a stress-free and memorable holiday.
     </p>
     <p class="ar-text" style="max-width: 800px; margin: 20px auto; color: #ccc;" dir="rtl">
-        نحن متخصصون في تقديم جولات سياحية خاصة وعالية الجودة للضيوف العرب. مع سائقينا الذين يتحدثون اللغة العربية بطلاقة، وسياراتنا المريحة، ومعرفتنا العميقة بأجمل الأماكن في بالي، نضمن لعائلتك قضاء عطلة لا تُنسى في أجواء من الراحة والخصوصية.
+        هل تبحث عن <strong>سائق يتحدث العربية في بالي</strong> موثوق به؟ نحن متخصصون في تقديم جولات سياحية خاصة وعالية الجودة للضيوف العرب. مع سائقينا الذين يتحدثون اللغة العربية بطلاقة، وسياراتنا المريحة، ومعرفتنا العميقة بأجمل الأماكن في بالي، نضمن لعائلتك قضاء عطلة لا تُنسى في أجواء من الراحة والخصوصية.
     </p>
 </section>
 
@@ -489,6 +495,13 @@
     </div>
 </section>
 
+<!-- WHATSAPP FLOATING BUTTON (DITAMBAHKAN) -->
+<a href="https://wa.me/6285647100418" target="_blank" class="whatsapp-float">
+    <i class="fab fa-whatsapp" style="font-size: 28px;"></i>
+    <span class="en-text">Chat via WhatsApp</span>
+    <span class="ar-text">تواصل عبر الواتساب</span>
+</a>
+
 <script>
     // 1. FUNGSI UTAMA SWITCH LANGUAGE
     function switchLanguage(lang) {
@@ -565,35 +578,35 @@
         if (btn) btn.style.display = (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) ? "block" : "none";
     };
 </script>
+
+<!-- 4. PERBAIKAN ANIMASI ANTI TERPOTONG DI IPHONE/MOBILE -->
 <script>
     function animateText(elementId, delayStart) {
         const el = document.getElementById(elementId);
         if (!el) return;
 
-        // 1. SIMPAN TEKS MURNI (Hanya dilakukan sekali saat web pertama kali dibuka)
-        // Ini mencegah teks tercemar oleh spasi kaku saat layar ditarik-tarik (resize)
+        // SIMPAN TEKS MURNI: Mencegah bug spasi ganda saat layar ditarik/di-resize
         if (!el.hasAttribute('data-text')) {
             const pureText = el.innerText.trim().replace(/\u00A0/g, " ");
             el.setAttribute('data-text', pureText);
         }
         
-        // Selalu panggil teks murni yang sudah disimpan
         const text = el.getAttribute('data-text');
 
-        // 2. JIKA DI BUKA DI HP (Layar kecil)
+        // DETEKSI HP: Jangan jalankan animasi, kembalikan ke teks normal agar turun utuh ke baris bawah
         if (window.innerWidth <= 768) {
-            el.innerHTML = text; // Tampilkan teks murni dengan spasi alami
+            el.innerHTML = text; 
             return;
         }
 
-        // 3. JIKA DI BUKA DI LAPTOP (Jalankan animasi)
+        // DETEKSI LAPTOP: Jalankan animasi huruf seperti biasa
         el.innerHTML = ""; 
         text.split("").forEach((char, index) => {
             const span = document.createElement("span");
             
             if (char === " ") {
                 span.textContent = " "; 
-                span.style.whiteSpace = "pre"; // Kunci agar spasi tidak hilang
+                span.style.whiteSpace = "pre"; 
             } else {
                 span.textContent = char;
             }
@@ -613,10 +626,10 @@
     // Jalankan saat load halaman
     document.addEventListener("DOMContentLoaded", triggerAnimations);
 
-    // Jalankan saat layar ditarik/di-resize (Sekarang sudah aman dari bug!)
+    // Jalankan ulang saat resize layar
     window.addEventListener("resize", triggerAnimations);
 
-    // Jalankan saat tombol bahasa ditekan
+    // Jalankan ulang animasi jika tombol bahasa diklik
     document.getElementById('btn-en').addEventListener('click', () => setTimeout(triggerAnimations, 50));
     document.getElementById('btn-ar').addEventListener('click', () => setTimeout(triggerAnimations, 50));
 </script>
