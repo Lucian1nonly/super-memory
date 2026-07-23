@@ -570,13 +570,34 @@
         const el = document.getElementById(elementId);
         if (!el) return;
 
-        // Ambil teks asli dan hapus class 'char' jika sudah pernah dianimasikan sebelumnya
-        const text = el.innerText;
-        el.innerHTML = ""; 
+        // 1. SIMPAN TEKS MURNI (Hanya dilakukan sekali saat web pertama kali dibuka)
+        // Ini mencegah teks tercemar oleh spasi kaku saat layar ditarik-tarik (resize)
+        if (!el.hasAttribute('data-text')) {
+            const pureText = el.innerText.trim().replace(/\u00A0/g, " ");
+            el.setAttribute('data-text', pureText);
+        }
         
+        // Selalu panggil teks murni yang sudah disimpan
+        const text = el.getAttribute('data-text');
+
+        // 2. JIKA DI BUKA DI HP (Layar kecil)
+        if (window.innerWidth <= 768) {
+            el.innerHTML = text; // Tampilkan teks murni dengan spasi alami
+            return;
+        }
+
+        // 3. JIKA DI BUKA DI LAPTOP (Jalankan animasi)
+        el.innerHTML = ""; 
         text.split("").forEach((char, index) => {
             const span = document.createElement("span");
-            span.textContent = char === " " ? "\u00A0" : char;
+            
+            if (char === " ") {
+                span.textContent = " "; 
+                span.style.whiteSpace = "pre"; // Kunci agar spasi tidak hilang
+            } else {
+                span.textContent = char;
+            }
+            
             span.className = "char";
             span.style.animationDelay = `${delayStart + (index * 0.03)}s`;
             el.appendChild(span);
@@ -585,15 +606,17 @@
 
     function triggerAnimations() {
         const isAr = document.body.classList.contains('lang-ar');
-        // Panggil animasi untuk ID yang sesuai
         animateText(isAr ? "anim-title-ar" : "anim-title", 0.1);
         animateText(isAr ? "anim-subtitle-ar" : "anim-subtitle", 0.8);
     }
 
-    // Jalankan saat load
+    // Jalankan saat load halaman
     document.addEventListener("DOMContentLoaded", triggerAnimations);
 
-    // Jalankan saat tombol EN/AR ditekan
+    // Jalankan saat layar ditarik/di-resize (Sekarang sudah aman dari bug!)
+    window.addEventListener("resize", triggerAnimations);
+
+    // Jalankan saat tombol bahasa ditekan
     document.getElementById('btn-en').addEventListener('click', () => setTimeout(triggerAnimations, 50));
     document.getElementById('btn-ar').addEventListener('click', () => setTimeout(triggerAnimations, 50));
 </script>
